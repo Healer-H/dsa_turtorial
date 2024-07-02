@@ -6,14 +6,14 @@ using namespace std;
 int binary_search(int a[], int left, int right, int val) {
     while(left <= right) {
         int middle = (left + right) / 2;
-        if(a[middle] <= val && val < a[middle + 1]) {
+        if(a[middle] < val && val <= a[middle + 1]) {
             return middle;
         }
         if(val < a[middle]) {
             right = middle - 1;
         }
         else {
-            left = middle + 1;
+            left = middle;
         }
     }
 }
@@ -30,6 +30,7 @@ void ChenTang(int x, int a[], int& n)
             a[i + 1] = a[i];
         }
         a[0] = x;
+        n++;
         return;
     }
     int idx = binary_search(a, 0, n - 1, x); 
